@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Signal Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .stimulus {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 20px auto;
+      display: none; /* Initially hidden */
+      border-radius: 50%; /* Rounded shape */
+      transition: background-color 0.5s ease; /* Smooth color transition */
+    }
+
+    #options {
+      margin-top: 20px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 0 10px;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease; /* Smooth color transition */
+    }
+
+    .option:hover {
+      background-color: #ddd; /* Lighter background on hover */
+    }
+
+    #feedback {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="stimulus" id="stimulus"></div>
+    <div id="options">
+      <div class="option" data-color="blue">Blue</div>
+      <div class="option" data-color="red">Red</div>
+      <div class="option" data-color="green">Green</div>
+      <div class="option" data-color="yellow">Yellow</div>
+      <div class="option" data-color="orange">Orange</div>
+      <div class="option" data-color="purple">Purple</div>
+    </div>
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    const stimulus = document.getElementById('stimulus');
+    const options = document.querySelectorAll('.option');
+    const feedback = document.getElementById('feedback');
+    let stimulusTimeout;
+    let stopSignalTimeout;
+    let isStimulusVisible = false;
+    let targetColor;
+
+    // Start the test
+    startTest();
+
+    function startTest() {
+      showStimulus();
+    }
+
+    function showStimulus() {
+      isStimulusVisible = true;
+      feedback.textContent = '';
+      targetColor = getRandomColor();
+      stimulus.style.backgroundColor = targetColor;
+      stimulus.style.display = 'block';
+      stimulusTimeout = setTimeout(showStopSignal, getRandomDelay());
+    }
+
+    function showStopSignal() {
+      stopSignalTimeout = setTimeout(checkResponse, 500); // Wait for 0.5s for user response
+    }
+
+    function checkResponse() {
+      if (isStimulusVisible) {
+        feedback.textContent = 'Too slow!';
+        hideStimulus();
+      }
+    }
+
+    function handleResponse(event) {
+      clearTimeout(stimulusTimeout);
+      clearTimeout(stopSignalTimeout);
+      if (isStimulusVisible) {
+        const selectedColor = event.target.getAttribute('data-color');
+        if (selectedColor === targetColor) {
+          feedback.textContent = 'Correct!';
+        } else {
+          feedback.textContent = 'Incorrect!';
+        }
+        hideStimulus();
+      }
+    }
+
+    function hideStimulus() {
+      isStimulusVisible = false;
+      stimulus.style.display = 'none';
+      setTimeout(startTest, getRandomDelay());
+    }
+
+    function getRandomColor() {
+      const colors = ['blue', 'red', 'green', 'yellow', 'orange', 'purple']; // Additional colors
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function getRandomDelay() {
+      return Math.floor(Math.random() * 2000) + 1000; // Random delay between 1s and 3s
+    }
+
+    // Event listeners
+    options.forEach(option => {
+      option.addEventListener('click', handleResponse);
+    });
+  </script>
+</body>
+</html>

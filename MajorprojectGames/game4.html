@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Scramble Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .word-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .word-container input {
+            margin-top: 5px;
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p#result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Word Scramble Game</h1>
+        <div id="game"></div>
+        <button onclick="checkAnswer()">Check Answer</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const words = ["APPLE", "BANANA", "PINEAPPLE", "STRAWBERRY", "GUAVA"];
+        const successMessages = ["Well done!", "Great job!", "You got it!", "Awesome!"];
+        let currentWordIndex = 0;
+
+        function displayWord() {
+            const word = words[currentWordIndex];
+            const container = document.getElementById('game');
+            container.innerHTML = ''; // Clear previous content
+            const wordContainer = document.createElement('div');
+            wordContainer.className = 'word-container';
+            wordContainer.innerHTML = `
+                <p>Word: ${word}</p>
+                <input type="text" id="userInput" placeholder="Enter your answer" autofocus>
+            `;
+            container.appendChild(wordContainer);
+        }
+
+        function checkAnswer() {
+            const userInput = document.getElementById('userInput').value.toUpperCase();
+            const correctAnswer = words[currentWordIndex];
+            const resultElement = document.getElementById('result');
+            if (userInput === correctAnswer) {
+                resultElement.innerText = successMessages[Math.floor(Math.random() * successMessages.length)];
+            } else {
+                resultElement.innerText = "Incorrect! The correct answer is: " + correctAnswer;
+            }
+            currentWordIndex++;
+            if (currentWordIndex < words.length) {
+                displayWord();
+                document.getElementById('userInput').value = ''; // Clear previous input
+            } else {
+                document.getElementById('game').innerText = '';
+                document.querySelector('button').style.display = 'none';
+            }
+        }
+
+        displayWord();
+    </script>
+</body>
+</html>

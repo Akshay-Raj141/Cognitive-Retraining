@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sustained Attention to Response Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .game-container {
+      margin-top: 50px;
+    }
+
+    .number {
+      font-size: 48px;
+      color: #000; /* Initial color */
+      transition: color 0.5s ease; /* Smooth color transition */
+      animation: changeNumber 1s infinite alternate; /* Animation for number change */
+    }
+
+    @keyframes changeNumber {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
+
+    #responseButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    #responseButton:hover {
+      background-color: #45a049; /* Darker green */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sustained Attention to Response Test</h1>
+    <p>Click the button as soon as you see a number that is not 3.</p>
+    <div class="game-container">
+      <p class="number" id="number">3</p>
+      <button id="responseButton" onclick="checkResponse()">Start</button>
+    </div>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    let timer;
+    let gameStarted = false;
+
+    function getRandomNumber() {
+      // Generate a random number between 1 and 9 (inclusive)
+      return Math.floor(Math.random() * 9) + 1;
+    }
+
+    function startGame() {
+      gameStarted = true;
+      document.getElementById('responseButton').innerText = 'Click when you see a number other than 3';
+      generateNewNumber();
+    }
+
+    function generateNewNumber() {
+      const numberElement = document.getElementById('number');
+      const randomNumber = getRandomNumber();
+      numberElement.innerText = randomNumber;
+      numberElement.style.color = '#000'; // Set color back to black
+
+      // If the generated number is 3, keep generating until it's not 3
+      if (randomNumber === 3) {
+        generateNewNumber();
+      }
+    }
+
+    function checkResponse() {
+      if (!gameStarted) {
+        startGame();
+      } else {
+        const number = parseInt(document.getElementById('number').innerText);
+        if (number !== 3) {
+          clearInterval(timer);
+          document.getElementById('result').innerText = 'You clicked in time! Well done!';
+          document.getElementById('responseButton').innerText = 'Start Again';
+          gameStarted = false;
+        } else {
+          document.getElementById('number').style.color = '#fff'; // Change color to white if 3 is clicked
+          clearInterval(timer); // Stop generating new numbers
+          timer = setInterval(generateNewNumber, 1000); // Start generating new numbers again
+        }
+      }
+    }
+  </script>
+</body>
+</html>

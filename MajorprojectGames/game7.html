@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Test Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        #wordDisplay {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button:hover {
+            background-color: lightgreen;
+            color: black;
+        }
+
+        /* Style for the popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 9999;
+        }
+
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="wordDisplay"></div>
+        <div id="score">Score: <span id="scoreValue">0</span></div>
+        <button id="leftButton" onclick="handleButtonClick('Left')">Left</button>
+        <button id="rightButton" onclick="handleButtonClick('Right')">Right</button>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup"></div>
+
+    <script>
+        const words = ['Left', 'Right'];
+        let currentIndex = 0;
+        let score = 0;
+
+        function displayNextWord() {
+            document.getElementById('wordDisplay').textContent = words[currentIndex];
+        }
+
+        function handleButtonClick(direction) {
+            if (words[currentIndex] === direction) {
+                showPopup('Correct!');
+                updateScore(1); // Increase score by 1 for correct answer
+            } else {
+                showPopup('Incorrect!');
+            }
+            currentIndex = (currentIndex + 1) % words.length;
+            displayNextWord();
+        }
+
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 1500); // Hide popup after 1.5 seconds
+        }
+
+        function updateScore(points) {
+            score += points;
+            document.getElementById('scoreValue').textContent = score;
+        }
+
+        // Start the game
+        displayNextWord();
+    </script>
+</body>
+</html>

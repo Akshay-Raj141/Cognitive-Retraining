@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Making Test</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #numberContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .number {
+            border: 1px solid #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .number:hover {
+            background-color: #333;
+        }
+        .number.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #selectedNumbers {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .selectedNumber {
+            display: inline-block;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            background-color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .selectedNumber:hover {
+            background-color: #4CAF50;
+        }
+        #errorMessage {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            display: none;
+            animation: popupFade 0.5s ease forwards;
+        }
+        @keyframes popupFade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Trail Making Test</h1>
+    <div id="popupMessage" class="popup">
+        You completed the Trail Making Test!
+    </div>
+    <div id="numberContainer"></div>
+    <div id="selectedNumbers"></div>
+    <p id="errorMessage"></p>
+
+    <script>
+        // JavaScript code
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateNumbers() {
+            const numbers = Array.from({length: 10}, (_, i) => i + 1);
+            const shuffledNumbers = shuffleArray(numbers);
+            const numberContainer = document.getElementById('numberContainer');
+            
+            numberContainer.innerHTML = '';
+            
+            shuffledNumbers.forEach(num => {
+                const numberDiv = document.createElement('div');
+                numberDiv.textContent = num;
+                numberDiv.dataset.number = num;
+                numberDiv.classList.add('number');
+                numberContainer.appendChild(numberDiv);
+            });
+        }
+
+        let currentNumber = 0;
+        let selectedNumbers = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generateNumbers();
+
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('number')) {
+                    const selectedNumber = parseInt(event.target.dataset.number);
+                    if (selectedNumber === currentNumber + 1) {
+                        currentNumber = selectedNumber;
+                        event.target.classList.add('selected');
+                        selectedNumbers.push(selectedNumber);
+                        document.getElementById('selectedNumbers').innerHTML = selectedNumbers.map(num => `<div class="selectedNumber">${num}</div>`).join('');
+                        document.getElementById('errorMessage').textContent = '';
+                        if (currentNumber === 10) {
+                            document.getElementById('popupMessage').style.display = 'block';
+                            setTimeout(() => {
+                                document.getElementById('popupMessage').style.display = 'none';
+                            }, 2000);
+                            generateNumbers();
+                            currentNumber = 0;
+                            selectedNumbers = [];
+                            document.getElementById('selectedNumbers').textContent = '';
+                        }
+                    } else {
+                        document.getElementById('errorMessage').textContent = 'Please select the numbers in ascending order.';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
