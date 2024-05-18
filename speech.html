@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Recognition</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #word-display {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #score {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .wrong-message {
+      margin-top: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Speech Recognition Demo</h1>
+    <button id="start-btn">Start Reading</button>
+    <div id="word-display"></div>
+    <div id="output"></div>
+    <div id="score">Score: <span id="score-value">0</span></div>
+    <div id="wrong-message" class="wrong-message hidden">Your pronunciation was incorrect.</div>
+  </div>
+
+  <script>
+    const words = ["apple", "banana", "cat", "dog", "elephant", "fish", "grape", "house", "ice cream", "jacket"]; // Additional words
+
+    let currentIndex = 0; // Index of the current word being displayed
+    let score = 0;
+
+    // Initialize speech recognition object
+    const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+
+    // Get DOM elements
+    const startBtn = document.getElementById('start-btn');
+    const wordDisplay = document.getElementById('word-display');
+    const outputDiv = document.getElementById('output');
+    const scoreValue = document.getElementById('score-value');
+    const wrongMessage = document.getElementById('wrong-message');
+
+    // Event listener for start button click
+    startBtn.addEventListener('click', () => {
+      startBtn.textContent = 'Listening...';
+      startBtn.disabled = true;
+      outputDiv.textContent = '';
+      wrongMessage.classList.add('hidden'); // Hide incorrect message
+      score = 0;
+      scoreValue.textContent = score;
+
+      displayNextWord(); // Display the first word
+      recognition.start();
+    });
+
+    // Event listener for speech recognition result
+    recognition.onresult = (event) => {
+      const resultIndex = event.resultIndex;
+      const transcript = event.results[resultIndex][0].transcript.trim().toLowerCase();
+      const currentWord = words[currentIndex];
+
+      if (transcript === currentWord) {
+        outputDiv.textContent = 'Correct!';
+        score++;
+        scoreValue.textContent = score;
+        displayNextWord();
+      } else {
+        outputDiv.textContent = 'Please pronounce the word: ' + currentWord;
+        wrongMessage.classList.remove('hidden'); // Show incorrect message
+      }
+    };
+
+    // Event listener for speech recognition error
+    recognition.onerror = (event) => {
+      outputDiv.textContent = 'Error: ' + event.error;
+      console.error('Speech recognition error:', event.error);
+    };
+
+    // Event listener for speech recognition end
+    recognition.onend = () => {
+      startBtn.textContent = 'Start Reading';
+      startBtn.disabled = false;
+    };
+
+    // Function to display the next word
+    function displayNextWord() {
+      if (currentIndex < words.length - 1) {
+        currentIndex++;
+        wordDisplay.textContent = words[currentIndex];
+      } else {
+        wordDisplay.textContent = 'End of words.';
+        recognition.stop();
+      }
+    }
+  </script>
+</body>
+</html>

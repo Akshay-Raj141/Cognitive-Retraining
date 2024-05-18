@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        :root {
+            --space: 1rem;
+            --border: 4px;
+            --page-width: 80ch;
+            --font-family: 'Helvetica', sans-serif;
+            --color-link: black;
+            --color-active: royalblue;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --duration: 350ms;
+            --section-offset: 0;
+          }
+          
+          * {
+            box-sizing: border-box;
+          }
+          
+          html {
+            --scroll-behavior: smooth;
+            scroll-behavior: var(--scroll-behavior);
+            
+            @media (prefers-reduced-motion: reduce) {
+              --scroll-behavior: auto;
+            }
+          }
+          
+          body {
+            font-family: var(--font-family);
+            line-height: 1.5;
+          }
+          
+          h1, h2, h3 {
+            font-weight: bold;
+            line-height: 1.25;
+          }
+          
+          h1 {
+            font-size: 2.75rem;
+          }
+          
+          h2 {
+            font-size: 2.25rem;
+          }
+          
+          h3 {
+            font-size: 1.5rem;
+          }
+          
+          ul:not(.menu) {
+            list-style-type: disc;
+            margin-left: var(--space);
+            
+            > li + li {
+              margin-top: var(--space);
+            }
+          }
+          
+          .nav-sections {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 
+              inset lightgray 0 -1px 0,
+              rgba(black, 0.15) 0 3px 10px 0;
+            z-index: 100;
+            
+            .menu {
+              position: relative;
+              display: flex;
+              flex-wrap: nowrap;
+              overflow: scroll;
+              overscroll-behavior: none;
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+              margin: 0 auto;
+              max-width: var(--page-width);
+              transform: translateZ(0);
+              transition: transform var(--ease) var(--duration);
+              
+              &::-webkit-scrollbar { display: none; }
+            }
+            
+            .menu-item-link {
+              display: block;
+              padding: calc(var(--space) * 1.5) var(--space);
+              text-decoration: none;
+              white-space: nowrap;
+              color: var(--color-link);
+              transition: color var(--ease) var(--duration);
+              
+              &.active {
+                color: var(--color-active);
+              }
+            }
+          }
+          
+          .active-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--color-active);
+            transition: width var(--ease) var(--duration), transform var(--ease) var(--duration);
+          }
+          
+          .placeholder-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 50vh;
+            background-color: lightgray;
+            background-image: url("Images/s1.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          
+          .page-sections {
+            margin: 0 auto;
+            max-width: var(--page-width);
+          }
+          
+          .page-section {
+            margin: calc(var(--space) * 2) 0;
+            padding: calc(var(--space) * 2) var(--space);
+              
+            > * + * {
+              margin-top: calc(var(--space) * 1.5);
+            }
+          }
+          
+          .section-title {
+            outline: none;
+            
+            &:before {
+              content: ""; 
+              display: block; 
+              visibility: hidden;
+              pointer-events: none;
+              margin-top: calc(var(--section-offset) * -1px);
+              height: calc(var(--section-offset) * 1px);
+            }
+          }
+          .float-left{
+            float:left;
+            width: 400px;
+            height: 400px;
+          }
+          .float-right{
+            float:right;
+            width: 400px;
+            height: 400px;
+          }
+    </style>
+</head>
+<body>
+    <header class="placeholder-section">
+        <h1>Speech Theraphy</h1>
+      </header>
+      
+      <nav class="nav-sections">
+        <ul class="menu">
+          <li class="menu-item"><a class="menu-item-link active" href="#Introduction">Introduction</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#Conditions treated with Speech Theraphy">Conditions treated with Speech Theraphy</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#Types">Types</a></li>
+        
+          <li class="menu-item"><a class="menu-item-link" href="#Activities">Activities</a></li>
+          <div class="active-line"></div>
+        </ul>
+      </nav>
+      
+      <main id="main-content" class="page-sections">
+        <section class="page-section">
+          <h2 class="section-title" id="Introduction">Introduction</h2>
+          <p>Speech therapy is the assessment and treatment of communication problems and speech disorders. It is performed by speech-language pathologists (SLPs), which are often referred to as speech therapists.
+
+ </p>
+          <p>Speech therapy techniques are used to improve communication. These include articulation therapy, language intervention activities, and others depending on the type of speech or language disorder.</p>
+          <p>Speech therapy may be needed for speech disorders that develop in childhood or speech impairments in adults caused by an injury or illness, such as stroke or brain injury.</p>
+          
+          
+          <h3>Speech Theraphy for children</h3>
+          <ul><p>For your child, speech therapy may take place in a classroom or small group, or one-on-one, depending on the speech disorder. Speech therapy exercises and activities vary depending on your child's disorder, age, and needs. During speech therapy for children, the SLP may:</p>
+            <li>interact through talking and playing, and using books, pictures other objects as part of language intervention to help stimulate language development</li>
+            <li>model correct sounds and syllables for a child during age-appropriate play to teach the child how to make certain sounds</li>
+            <li>provide strategies and homework for the child and parent or caregiver on how to do speech therapy at home</li>
+            
+          </ul>
+        </section>
+
+<section class="page-section">
+          <h2 class="section-title" id="Conditions treated with Speech Theraphy">Conditions treated with Speech Theraphy</h2>
+          <ul><li><h4>Aphasia:</h4><p>People with aphasia can have difficulty reading, writing, speaking and understanding language. It often develops after a stroke or injury damages the area of the brain that processes language.
+Apraxia: People with apraxia know what they want to say, but have trouble forming the words. They may have trouble with reading, writing, swallowing and other motor skills.</p></li>
+<li><h4>Apraxia: </h4><p>People with apraxia know what they want to say, but have trouble forming the words. They may have trouble with reading, writing, swallowing and other motor skills.</p></li>
+<li><h4>Articulation disorder: </h4><p>People with articulation disorders are unable to produce certain word sounds. For example, they may substitute one sound for another  like saying 'wed' instead of 'red' or 'thith' instead of 'this.'</p></li>
+<li><h4>Cognitive-communication disorders:</h4><p>ou might have difficulty communicating if the area of your brain that controls your thinking ability is damaged. People with cognitive-communication disorders may have issues with listening, speaking, memory and problem-solving.</p></li>
+<li><h4>Dysarthria:</h4><p>People with dysarthria may have slow or slurred speech. It happens when the muscles that control your speech become weak. Common causes include stroke, multiple sclerosis (MS), amyotrophic lateral sclerosis (ALS) or other nervous system disorders.</p></li>
+<li><h4>Fluency disorders:</h4><p>Fluency disorders disrupt the speed, flow and rhythm of your speech. Stuttering (speech that's interrupted or blocked) is a fluency disorder. So is cluttering (speech that's merged together and fast).</p></li>
+<li><h4>Expressive disorders:</h4><p>:People with expressive disorders may have difficulty getting words out or conveying their thoughts. Expressive disorders are linked to stroke or other neurological events, developmental delays and hearing loss.</p></li>
+<li><h4>Receptive disorders:</h4><p>People with receptive disorders have difficulty comprehending or processing what others are saying. They may have a limited vocabulary, trouble following directions or seem uninterested in conversations.</p></li>
+<li><h4>Receptive disorders:</h4><p>Resonance disorders are health conditions that affect your oral or nasal cavities. They can block airflow and alter the vibrations that help you hear sounds. Cleft palate, swollen tonsils and other conditions that affect the structure of your mouth and nose can cause resonance disorders.</p></li>
+</section>
+
+        <section class="page-section">
+          <h2 class="section-title" id="Types">Types</h2>
+          
+<h3>Speech Therapy for Late Talkers</h3>
+<img src="Images/s2.jpg" alt="images" class="float-left"/>
+<ul><li>A common speech therapy method is used to help children who have reached the expected age for speech development but have not started talking.</li>
+            <li>If your infant or toddler should be talking by now but isn't, they may be referred to a speech therapist. The therapist will likely try different things to encourage your child to talk, including playing with him. Sometimes, withholding a favorite toy until a child asks for it motivates small children to talk, but this depends on the circumstance.</li>
+            <li>For some children, other types of communication, such as sign language or picture cards, might be introduced. Speech therapists may also refer your child for further evaluation, such as hearing tests if necessary.</li></ul>
+            <h3>Speech Therapy for Kids With Apraxia</h3>
+<p>Children with apraxia of speech have difficulty saying certain syllables or making certain sounds. Your child knows what they want to say, but it doesn't seem to come out right. Speech therapists are qualified to evaluate children for apraxia by using several tests, including:</p>
+            <ul>
+<li>Oral-motor assessment to check for muscle weakness in the jaw, lips, or tongue</li>
+<li>Melody of speech assessment during which the therapist listens to see if they can appropriately stress certain syllables and use pitch and pauses at the appropriate place in a sentence</li>
+<li>Speech sound assessment further determines how well the child can pronounce sounds, including vowels, consonants, and sound combinations. This includes determining how well others are able to understand the child's conversational speech</li></ul>
+<p>If your child is diagnosed with apraxia, they will probably need speech therapy on a one-on-one basis several times per week.1 This therapy will likely consist of intensively practicing their speech. The therapist will try to help your child understand auditory feedback as well as visual or tactile cues.</p>
+<h3>Speech Therapy for Stuttering</h3>
+<p>Speech therapy techniques can be applied to help treat stuttering.</p>
+<p>Stuttering is a problem that typically develops during childhood but can develop during adulthood as well.2 Stuttering is usually considered a type of behavioral problem. Speech therapists will try to teach your child who stutters behavioral modification techniques that in turn may help control their stuttering.</p>
+<p>A common method that may be used on your child is to teach them to control the rate of speech since speaking too quickly can make stuttering worse for some people. Practicing speech in a slower, more fluent manner can be helpful.3 It can also be helpful to monitor breathing.</p>
+<h3>Speech Therapy for Aphasia</h3>
+<p>Aphasia is a condition that causes difficulty speaking as a result of some sort of damage to the brain. The condition can also consist of difficulty listening, reading, and writing. Aphasia happens to many adults after they have experienced a stroke.</p>
+<p>Speech therapists play a crucial role in diagnosing aphasia by evaluating an individual's ability to understand others, express themselves, and even swallow. There are many different things a speech therapist might do to help a person with aphasia, including:</p>
+<ul>
+  <img src="Images/s3.jpg" alt="images" class="float-right"/>
+<li>Drills to improve specific language skills</li>
+<li>Group therapy to improve conversational skills</li>
+<li>Gestures and writing to augment their communication skills</li>
+
+</ul>
+</section>
+        <section class="page-section">
+          <h2 class="section-title" id="Activities">Activities</h2>
+          <p>For children, speech therapy usually involves play, like sequencing activities or language-based board games.</p>
+          <p>Some examples of speech therapy activities include</p>
+<ul>
+<li>
+  <h4>Tongue and mouth exercises:</h4>
+  <p> Your speech therapist will show you exercises and motions that will strengthen your mouth and tongue. These exercises help train your tongue to move in coordinated patterns.</p>
+<li>
+  <h4>Facial movements:</h4>
+          <p>  Controlling the expression on your face can help improve your motor skills. Your therapist might have you smile or pucker your lips, then relax your face.</p>
+<li><h4>Reading out loud:</h4>
+          <p>  If your speech disorder prevents you from moving your mouth and tongue properly, reading out loud can strengthen the connection between your brain and mouth.</p>
+<li><h4>Playing word games: </h4>
+          <p>  Studies have shown that memory games, word searches and crossword puzzles can maintain cognitive function and improve thinking skills.</p>
+</ul>
+
+
+
+
+        </section>
+      </main>
+      <footer class="placeholder-section">
+        <p></p>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        const sectionsContainer = document.querySelector('.page-sections');
+        const sections = document.querySelectorAll('.page-section');
+        const nav = document.querySelector('.nav-sections');
+        const menu = nav.querySelector('.menu');
+        const links = nav.querySelectorAll('.menu-item-link');
+        const activeLine = nav.querySelector('.active-line');
+        const sectionOffset = nav.offsetHeight + 24;
+        const activeClass = 'active';
+        let activeIndex = 0;
+        let isScrolling = true;
+        let userScroll = true;
+
+        const setActiveClass = () => {
+          links[activeIndex].classList.add(activeClass);
+};
+
+const removeActiveClass = () => {
+  links[activeIndex].classList.remove(activeClass);
+};
+
+const moveActiveLine = () => {
+  const link = links[activeIndex];
+  const linkX = link.getBoundingClientRect().x;
+  const menuX = menu.getBoundingClientRect().x;
+
+  activeLine.style.transform = `translateX(${(menu.scrollLeft - menuX) + linkX}px)`;
+  activeLine.style.width = `${link.offsetWidth}px`;
+}
+
+const setMenuLeftPosition = position => {
+  menu.scrollTo({
+    left: position,
+    behavior: 'smooth',
+  });
+};
+
+const checkMenuOverflow = () => {
+  const activeLink = links[activeIndex].getBoundingClientRect();
+  const offset = 30;
+  
+  if (Math.floor(activeLink.right) > window.innerWidth) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.right - window.innerWidth + offset);
+  } else if (activeLink.left < 0) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.left - offset)
+  }
+}
+
+const handleActiveLinkUpdate = current => {
+  removeActiveClass();
+  activeIndex = current;
+  checkMenuOverflow();
+  setActiveClass();
+  moveActiveLine();
+};
+
+const init = () => {
+  moveActiveLine(links[0]);
+  document.documentElement.style.setProperty('--section-offset', sectionOffset);
+}
+
+links.forEach((link, index) => link.addEventListener('click', () => {
+  userScroll = false;
+  handleActiveLinkUpdate(index);
+}))
+
+window.addEventListener("scroll", () => {
+  const currentIndex = sectionsContainer.getBoundingClientRect().top < 0
+    ? (sections.length - 1) - [...sections].reverse().findIndex(section => window.scrollY >= section.offsetTop - sectionOffset * 2)
+    : 0;
+  
+  if (userScroll && activeIndex !== currentIndex) {
+    handleActiveLinkUpdate(currentIndex);
+  } else {
+   	window.clearTimeout(isScrolling);
+	  isScrolling = setTimeout(() => userScroll = true, 100); 
+  }
+});
+
+init();
+      </script>
+</body>
+</html>

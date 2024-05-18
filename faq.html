@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <title>FAQ</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* general styling */
+
+:root {
+  ---Very-dark-blue: hsl(238, 29%, 16%);
+  --Soft-red: hsl(14, 88%, 65%);
+
+  --Very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --Dark-grayish-blue: hsl(240, 6%, 50%);
+
+  --Light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 0.75rem;
+  background: linear-gradient(180deg, hsl(273, 75%, 75%), hsl(240, 73%, 65%));
+}
+
+/* seperate styling */
+
+.faq-card {
+  position: relative;
+  max-width: 21rem;
+  width: 21rem;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  padding: 2em;
+  padding-top: 10em;
+  border-radius: 2em;
+  color: var(--Very-dark-grayish-blue);
+  background-color: white;
+  box-shadow: 5px 5px 30px rgba(0 0 0/ 0.3);
+  transition: transform 200ms ease-in;
+}
+
+.faq-card:hover {
+  transform: scale(1.015);
+}
+
+.faq__content {
+  width: 100%;
+}
+
+.faq__title {
+  margin-bottom: 1em;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.faq__item {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid var(--Light-grayish-blue);
+}
+
+.faq__question {
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 1em;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.faq__question:hover {
+  color: var(--Soft-red);
+}
+
+.faq__answer {
+  display: none;
+  padding-bottom: 1.5em;
+  color: var(--Dark-grayish-blue);
+  line-height: 1.5em;
+}
+
+.arrow-icon {
+  display: inline-block;
+  position: absolute;
+  top: 35%;
+  right: 0;
+  transform: rotate(0deg);
+  transition: transform 300ms ease;
+}
+
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 65px;
+  width: 200px;
+}
+
+.img-woman {
+  position: absolute;
+  top: -85px;
+  left: 65px;
+  width: 200px;
+}
+
+/* attribution styling */
+
+.attribution {
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  color: var(---Very-dark-blue);
+  opacity: 0.75;
+}
+
+.attribution a {
+  color: white;
+  text-decoration: underline;
+}
+
+.attribution a:hover {
+  color: rgba(255 255 255/0.5);
+}
+
+/* media queries */
+
+@media (min-width: 900px) {
+  body {
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .faq-card {
+    display: flex;
+    justify-items: center;
+    max-width: 60rem;
+    width: 60rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq__content {
+    order: 2;
+    width: 45%;
+    padding: 5em;
+  }
+
+  .faq__title {
+    text-align: left;
+  }
+
+  .imgs__container {
+    width: 50%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2em 0 0 2em;
+  }
+
+  .img-bg {
+    position: absolute;
+    top: 120px;
+    left: -100px;
+    transform: scale(400%);
+  }
+
+  .img-woman {
+    position: absolute;
+    top: 170px;
+    left: 70px;
+    transform: scale(220%);
+  }
+
+  .img-box {
+    position: absolute;
+    top: 190px;
+    left: -90px;
+    transition: transform 1s ease-in;
+  }
+
+  body:hover .img-box,
+  body:focus .img-box {
+    animation: up-and-down 1.25s linear infinite alternate;
+  }
+
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(-20%);
+    }
+  }
+}
+
+    </style>
+</head>
+<body>
+    <main>
+        <article class="faq-card">
+      
+          <div class="faq__content">
+            <h1 class="faq__title">FAQ</h1>
+            <div class="faq__item">
+              <h2 class="faq__question"><b>Do you handle Slow learners?</b> </br> Yes<img class="arrow-icon" src="images/icon-arrow-down.svg" alt="" aria-hidden=“true”></h2>
+              <p class="faq__answer"></p>
+            </div>
+            <div class="faq__item">
+              <h2 class="faq__question"><b>Do you deal with handwriting?</b></br> We provide handwriting program to improve formation of letters and organization of handwriting on paper..<img class="arrow-icon" src="images/icon-arrow-down.svg" alt="" aria-hidden=“true”></h2>
+              <p class="faq__answer"></p>
+            </div>
+            <div class="faq__item">
+              <h2 class="faq__question"><b>Do we handle behavior issues?</b> </br> Yes<img class="arrow-icon" src="images/icon-arrow-down.svg" alt="" aria-hidden=“true”></h2>
+              <p class="faq__answer"></p>
+            </div>
+            <div class="faq__item">
+              <h2 class="faq__question"><b>Do you handle Intellectually disability?</b> </br> Only mild Intellectual disability to manage their learning problems and to improve their cognition.<img class="arrow-icon" src="images/icon-arrow-down.svg" alt="" aria-hidden=“true”></h2>
+              <p class="faq__answer"></p>
+            </div>
+            <div class="faq__item">
+              <h2 class="faq__question"><b>Do you provide additional support?</b> </br>Chat and email support is available 24/7. <img class="arrow-icon" src="images/icon-arrow-down.svg" alt="" aria-hidden=“true”></h2>
+              <p class="faq__answer"></p>
+            </div>
+          </div>
+      
+          <div class="imgs__container">
+            <picture>
+              <source media="(min-width:900px)" srcset="https://kellychi22.github.io/frontend-mentor-solutions/09-faq-accordion-card/images/bg-pattern-desktop.svg">
+              <source media="(min-width:0px)" srcset="https://kellychi22.github.io/frontend-mentor-solutions/09-faq-accordion-card/images/bg-pattern-mobile.svg">
+              <img class="img-bg" src="" alt="" aria-hidden=“true”>
+            </picture>
+            <picture>
+              <source media="(min-width:900px)" srcset="https://kellychi22.github.io/frontend-mentor-solutions/09-faq-accordion-card/images/illustration-woman-online-desktop.svg">
+              <source media="(min-width:0px)" srcset="https://kellychi22.github.io/frontend-mentor-solutions/09-faq-accordion-card/images/illustration-woman-online-mobile.svg">
+              <img class="img-woman" src="" alt="" aria-hidden=“true”>
+            </picture>
+      
+          </div>
+          <picture>
+            <source media="(min-width:900px)" srcset="https://kellychi22.github.io/frontend-mentor-solutions/09-faq-accordion-card/images/illustration-box-desktop.svg">
+            <img class="img-box" src="" alt="" aria-hidden=“true”>
+          </picture>
+      
+        </article>
+      
+      </main>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        const questions = document.querySelectorAll(".faq__question");
+
+        questions.forEach((question) => {
+        question.addEventListener("click", function () {
+            let answer = question.nextElementSibling;
+            if (answer.style.display === "block") {
+            hideAnswer(question);
+            } else {
+            questions.forEach((question) => {
+                hideAnswer(question);
+            });
+            displayAnswer(question);
+            }
+        });
+        });
+
+        function displayAnswer(target) {
+        let answer = target.nextElementSibling;
+        let arrowIcon = target.firstElementChild;
+        answer.style.display = "block";
+        arrowIcon.style.transform = "rotate(180deg)";
+        target.style.fontWeight = "700";
+        }
+
+        function hideAnswer(target) {
+        let answer = target.nextElementSibling;
+        let arrowIcon = target.firstElementChild;
+        answer.style.display = "none";
+        arrowIcon.style.transform = "rotate(0deg)";
+        target.style.fontWeight = "400";
+        }
+        </script>
+</body>
+</html>

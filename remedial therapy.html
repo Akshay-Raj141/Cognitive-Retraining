@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        :root {
+            --space: 1rem;
+            --border: 4px;
+            --page-width: 80ch;
+            --font-family: 'Helvetica', sans-serif;
+            --color-link: black;
+            --color-active: royalblue;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --duration: 350ms;
+            --section-offset: 0;
+          }
+          
+          * {
+            box-sizing: border-box;
+          }
+          
+          html {
+            --scroll-behavior: smooth;
+            scroll-behavior: var(--scroll-behavior);
+            
+            @media (prefers-reduced-motion: reduce) {
+              --scroll-behavior: auto;
+            }
+          }
+          
+          body {
+            font-family: var(--font-family);
+            line-height: 1.5;
+          }
+          
+          h1, h2, h3 {
+            font-weight: bold;
+            line-height: 1.25;
+          }
+          
+          h1 {
+            font-size: 2.75rem;
+          }
+          
+          h2 {
+            font-size: 2.25rem;
+          }
+          
+          h3 {
+            font-size: 1.5rem;
+          }
+          
+          ul:not(.menu) {
+            list-style-type: disc;
+            margin-left: var(--space);
+            
+            > li + li {
+              margin-top: var(--space);
+            }
+          }
+          
+          .nav-sections {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 
+              inset lightgray 0 -1px 0,
+              rgba(black, 0.15) 0 3px 10px 0;
+            z-index: 100;
+            
+            .menu {
+              position: relative;
+              display: flex;
+              flex-wrap: nowrap;
+              overflow: scroll;
+              overscroll-behavior: none;
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+              margin: 0 auto;
+              max-width: var(--page-width);
+              transform: translateZ(0);
+              transition: transform var(--ease) var(--duration);
+              
+              &::-webkit-scrollbar { display: none; }
+            }
+            
+            .menu-item-link {
+              display: block;
+              padding: calc(var(--space) * 1.5) var(--space);
+              text-decoration: none;
+              white-space: nowrap;
+              color: var(--color-link);
+              transition: color var(--ease) var(--duration);
+              
+              &.active {
+                color: var(--color-active);
+              }
+            }
+          }
+          
+          .active-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--color-active);
+            transition: width var(--ease) var(--duration), transform var(--ease) var(--duration);
+          }
+          
+          .placeholder-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 50vh;
+            background-color: lightgray;
+            background-image: url("Images/rt1.jpg");
+            background-repeat: no-repeat;
+            background-size: 200vh 40vw;
+          }
+          
+          .page-sections {
+            margin: 0 auto;
+            max-width: var(--page-width);
+          }
+          
+          .page-section {
+            margin: calc(var(--space) * 2) 0;
+            padding: calc(var(--space) * 2) var(--space);
+              
+            > * + * {
+              margin-top: calc(var(--space) * 1.5);
+            }
+          }
+          
+          .section-title {
+            outline: none;
+            
+            &:before {
+              content: ""; 
+              display: block; 
+              visibility: hidden;
+              pointer-events: none;
+              margin-top: calc(var(--section-offset) * -1px);
+              height: calc(var(--section-offset) * 1px);
+            }
+          }
+          .float-left{
+            float:left;
+            width: 400px;
+            height: 400px;
+          }
+          .float-right{
+            float:right;
+          }
+    </style>
+</head>
+<body>
+    <header class="placeholder-section">
+        <h1>Remedial Therapy</h1>
+      </header>
+      
+      <nav class="nav-sections">
+        <ul class="menu">
+          <li class="menu-item"><a class="menu-item-link active" href="#Introduction">Introduction</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#Process">Process</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#Importance of Remedial Therapy">Importance of Remedial Therapy</a></li>
+        
+          <li class="menu-item"><a class="menu-item-link" href="#Techniques">Techniques</a></li>
+          <div class="active-line"></div>
+        </ul>
+      </nav>
+      
+      <main id="main-content" class="page-sections">
+        <section class="page-section">
+          <h2 class="section-title" id="Introduction">Introduction</h2>
+          <p>Remedial programs are generally designed in ways through which a gap between child's expected performance and current performance can be bridged. It focuses on imparting the core skills. It is also known as Developmental education or Basic Skill Education or 3R's Education (Reading, writing and Arithmetic).
+ </p>
+    <p>Remedial Therapy can strengthen the weak areas related to cognition and can be availed by any child who is facing difficulty in learning and coping up in daily life activities, or difficulty in Cognitive understanding/Cognitive Skills, Social Communication skills, Fine Motor Skills and Behavioral Skills.</p>      
+      <p>Remedial Therapy focuses on skills rather than on content. The therapy provided uses behavior teaching methods, which have clearly defined goals and strategies and is tailored and customized to each child's specific needs.</p>    
+          
+          <h3>Areas we work on </h3>
+          <img src="Images/rt2.jpg" alt="images" class="float-left"/>
+          <ul>
+            <li>Reading Skills (reading and understanding information)</li>
+            <li>Writing Skills (spellings, handwriting, writing expression)</li>
+            <li>Math Skills (basic and advance)</li>
+            <li>Information Processing (perception and memory) </li>
+            <li>Study Skills</li>
+            <li>Social Skills</li>  
+            <li>Functional Academics</li>         
+            </ul>
+      
+ </section>
+
+<section class="page-section">
+          <h2 class="section-title" id="Process">Process</h2>
+         
+<p>We start by taking a history for better understanding of the areas of concern, followed by an informal assessment for understanding the grade level at which the child can process information in the concerned area. We explain the assessment results to the parents and set goals with them (long and short term) for the child. Thereafter, formation of Individual Education Plan (IEP) takes place based on the results of the assessment and goals set by parents. The progress is tracked on a regular basis and post intervention evaluation is done.</p>
+
+
+<p>Parents are an integral part of all therapy sessions and goal settings.</p>
+</section>
+
+        <section class="page-section">
+          <h2 class="section-title" id="Importance of Remedial Therapy">Importance of Remedial Therapy</h2>
+          
+
+<p>As children grow older, expectations from them increase drastically. A child studying in grade 4 or 5 is expected to sit and attend long classes. A child with neurodevelopmental difficulties would find it hard to cope with this. Here is where remedial therapy comes in. </p>
+<p>Children with neurodevelopmental concerns start showing academic difficulties at an early stage, which should not be ignored. Early remedial intervention gives them a chance to learn coping techniques in their concern areas, build self-confidence and abstract thinking faster. They find it easier to meet academic expectations and learn more.</p>
+
+
+
+
+
+
+
+       
+
+
+        <section class="page-section">
+          <h2 class="section-title" id="Techniques">Techniques</h2>
+          
+
+
+          <p>The remedial technique can start with basic skills like letter recognition, sound identification, syllabification and move on to higher elements such as blends, classification, grammar rules and so on.</p>
+
+        </section>
+      </main>
+      <footer class="placeholder-section">
+        <p></p>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        const sectionsContainer = document.querySelector('.page-sections');
+const sections = document.querySelectorAll('.page-section');
+const nav = document.querySelector('.nav-sections');
+const menu = nav.querySelector('.menu');
+const links = nav.querySelectorAll('.menu-item-link');
+const activeLine = nav.querySelector('.active-line');
+const sectionOffset = nav.offsetHeight + 24;
+const activeClass = 'active';
+let activeIndex = 0;
+let isScrolling = true;
+let userScroll = true;
+
+const setActiveClass = () => {
+  links[activeIndex].classList.add(activeClass);
+};
+
+const removeActiveClass = () => {
+  links[activeIndex].classList.remove(activeClass);
+};
+
+const moveActiveLine = () => {
+  const link = links[activeIndex];
+  const linkX = link.getBoundingClientRect().x;
+  const menuX = menu.getBoundingClientRect().x;
+
+  activeLine.style.transform = `translateX(${(menu.scrollLeft - menuX) + linkX}px)`;
+  activeLine.style.width = `${link.offsetWidth}px`;
+}
+
+const setMenuLeftPosition = position => {
+  menu.scrollTo({
+    left: position,
+    behavior: 'smooth',
+  });
+};
+
+const checkMenuOverflow = () => {
+  const activeLink = links[activeIndex].getBoundingClientRect();
+  const offset = 30;
+  
+  if (Math.floor(activeLink.right) > window.innerWidth) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.right - window.innerWidth + offset);
+  } else if (activeLink.left < 0) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.left - offset)
+  }
+}
+
+const handleActiveLinkUpdate = current => {
+  removeActiveClass();
+  activeIndex = current;
+  checkMenuOverflow();
+  setActiveClass();
+  moveActiveLine();
+};
+
+const init = () => {
+  moveActiveLine(links[0]);
+  document.documentElement.style.setProperty('--section-offset', sectionOffset);
+}
+
+links.forEach((link, index) => link.addEventListener('click', () => {
+  userScroll = false;
+  handleActiveLinkUpdate(index);
+}))
+
+window.addEventListener("scroll", () => {
+  const currentIndex = sectionsContainer.getBoundingClientRect().top < 0
+    ? (sections.length - 1) - [...sections].reverse().findIndex(section => window.scrollY >= section.offsetTop - sectionOffset * 2)
+    : 0;
+  
+  if (userScroll && activeIndex !== currentIndex) {
+    handleActiveLinkUpdate(currentIndex);
+  } else {
+   	window.clearTimeout(isScrolling);
+	  isScrolling = setTimeout(() => userScroll = true, 100); 
+  }
+});
+
+init();
+      </script>
+</body>
+</html>

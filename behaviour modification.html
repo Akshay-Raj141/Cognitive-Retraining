@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        :root {
+            --space: 1rem;
+            --border: 4px;
+            --page-width: 80ch;
+            --font-family: 'Helvetica', sans-serif;
+            --color-link: black;
+            --color-active: royalblue;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --duration: 350ms;
+            --section-offset: 0;
+          }
+          
+          * {
+            box-sizing: border-box;
+          }
+          
+          html {
+            --scroll-behavior: smooth;
+            scroll-behavior: var(--scroll-behavior);
+            
+            @media (prefers-reduced-motion: reduce) {
+              --scroll-behavior: auto;
+            }
+          }
+          
+          body {
+            font-family: var(--font-family);
+            line-height: 1.5;
+          }
+          
+          h1, h2, h3 {
+            font-weight: bold;
+            line-height: 1.25;
+          }
+          
+          h1 {
+            font-size: 2.75rem;
+          }
+          
+          h2 {
+            font-size: 2.25rem;
+          }
+          
+          h3 {
+            font-size: 1.5rem;
+          }
+          
+          ul:not(.menu) {
+            list-style-type: disc;
+            margin-left: var(--space);
+            
+            > li + li {
+              margin-top: var(--space);
+            }
+          }
+          
+          .nav-sections {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 
+              inset lightgray 0 -1px 0,
+              rgba(black, 0.15) 0 3px 10px 0;
+            z-index: 100;
+            
+            .menu {
+              position: relative;
+              display: flex;
+              flex-wrap: nowrap;
+              overflow: scroll;
+              overscroll-behavior: none;
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+              margin: 0 auto;
+              max-width: var(--page-width);
+              transform: translateZ(0);
+              transition: transform var(--ease) var(--duration);
+              
+              &::-webkit-scrollbar { display: none; }
+            }
+            
+            .menu-item-link {
+              display: block;
+              padding: calc(var(--space) * 1.5) var(--space);
+              text-decoration: none;
+              white-space: nowrap;
+              color: var(--color-link);
+              transition: color var(--ease) var(--duration);
+              
+              &.active {
+                color: var(--color-active);
+              }
+            }
+          }
+          
+          .active-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--color-active);
+            transition: width var(--ease) var(--duration), transform var(--ease) var(--duration);
+          }
+          
+          .placeholder-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 50vh;
+            background-color: lightgray;
+            background-image: url("Images/bmt1.jpg");
+            background-repeat: no-repeat;
+            background-size: 200vh 40vw;
+          }
+          
+          .page-sections {
+            margin: 0 auto;
+            max-width: var(--page-width);
+          }
+          
+          .page-section {
+            margin: calc(var(--space) * 2) 0;
+            padding: calc(var(--space) * 2) var(--space);
+              
+            > * + * {
+              margin-top: calc(var(--space) * 1.5);
+            }
+          }
+          
+          .section-title {
+            outline: none;
+            
+            &:before {
+              content: ""; 
+              display: block; 
+              visibility: hidden;
+              pointer-events: none;
+              margin-top: calc(var(--section-offset) * -1px);
+              height: calc(var(--section-offset) * 1px);
+            }
+          }
+          .float-left{
+            float:left;
+            width: 400px;
+            height: 400px;
+          }
+          .float-right{
+            float:right;
+            width: 400px;
+            height: 400px;
+          }
+    </style>
+</head>
+<body>
+    <header class="placeholder-section">
+        <h1>Behaviour Modification Theraphy</h1>
+      </header>
+      
+      <nav class="nav-sections">
+        <ul class="menu">
+          <li class="menu-item"><a class="menu-item-link active" href="#Introduction">Introduction</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#Steps to Set Up Behaviour Modification Plan">Steps to Set Up Behaviour Modification Plan</a></li>
+          <li class="menu-item"><a class="menu-item-link" href="#How to Use Behaviour Modification for Children">How to Use Behaviour Modification for Children</a></li>
+        
+          <li class="menu-item"><a class="menu-item-link" href="#Techniques">Techniques</a></li>
+          <div class="active-line"></div>
+        </ul>
+      </nav>
+      
+      <main id="main-content" class="page-sections">
+        <section class="page-section">
+          <h2 class="section-title" id="Introduction">Introduction</h2>
+          <p>Behavior modification is a psychotherapeutic intervention primarily used to eliminate or reduce maladaptive behavior in children or adults. While some therapies focus on changing thought processes that can affect behavior, for example, cognitive behavioral therapy, behavior modification focuses on changing specific behaviors with little consideration of a person’s thoughts or feelings. The progress and outcome of the intervention can be measured and evaluated. Functional analysis of the antecedents and consequences of the problem behavior(s) must be identified. This leads to the creation of specific target behaviors that will become the focus of change. Then, certain variables can be manipulated via reinforcers and punishments to change problem behavior(s). The goal is to eliminate or reduce maladaptive behavior.
+ </p>
+          
+          
+          
+          <h3>Benefits of Behaviour Modification Techniques</h3>
+          <img src="Images/bmt2.jpeg" alt="images" class="float-left"/>
+          <ul>
+            <li>It is very effective in overcoming various disorders such as Obsessive-Compulsive Disorder (OCD), Post-Traumatic Stress Disorder (PTSD), substance abuse, and addictions. It helps people to regain and increase their confidence and improve the quality of their life.</li>
+            <li>It improves physical and mental health by helping people resolve issues such as eating disorders, chronic pain, insomnia, depression, phobias, etc.</li>
+            <li>Behavior modification is also a component of Parent-Child Interaction Therapy (PCIT), which teaches specific skills to the parents that they can use to help improve physical and verbal exchanges with their children. PCIT is an evidence-based intervention for preventing child abuse & neglect, helpful for children who exhibit disruptive behavior and/or have experienced trauma, those on the autism spectrum, and has been shown to decrease child’s risk of antisocial and criminal behavior later in life.</li>
+<li>The Triple P – Positive Parenting Program draws on social learning, cognitive therapy, behavioral modification, and developmental theory as well as an exploration into risk factors associated with the development of social and behavioral problems in children. It aims to empower parents with the skills and confidence they need to be self-sufficient and to be able to manage family issues without ongoing support. </li>
+
+          </ul>
+        </section>
+
+<section class="page-section">
+          <h2 class="section-title" id="Steps to Set Up Behaviour Modification Plan">Steps to Set Up Behaviour Modification Plan</h2>
+         <h3>1.Understand the Child</h3>
+
+<p>It is important to consider your child’s age, gender, likes, dislikes, and other factors to gauge thier response to different behaviour modification strategies. For example, young children may consider spending more time with a parent as a reward, whereas teenagers may consider it as punishment because this reduces time with their friends.</p>
+<h3>2. Understand the Behaviour to Modify
+</h3>
+
+<p>Consider the effort and time required to modify the behaviour. For example, not wasting food can be taught with positive reinforcement. But preventing the wetting of bed at night needs more time and multiple techniques.</p>
+<h3>3. Choose the Method That Works Best</h3>
+
+<p>For younger children, positive reinforcement methods give the desired results. But for teenagers, a combination of negative or positive punishments might be more effective. Don’t hesitate to change or come up with your methods when existing ones don’t work.</p>
+<h3>4. Create a Behaviour Modification Plan</h3>
+
+<p>Create a plan with rewards, consequences, and punishments specifically designed on the basis of the behaviour to be corrected in the child. When there are natural consequences for negative behaviour, make sure you consider whether the child should face a consequence or if they have had enough for the day. If you push a child too much or too less any technique may end up being ineffective.</p>
+
+</section>
+
+        <section class="page-section">
+          <h2 class="section-title" id="How to Use Behaviour Modification for Children">How to Use Behaviour Modification for Children</h2>
+          
+<h3>1. Consistent Consequences</h3>
+<img src="Images/bmt3.jpg" alt="images" class="float-right"/>
+<p>Make sure to provide the same consequences each time when the child performs a task or misbehaves. For example, if you praise your child when he switches off the light in the bathroom, make sure to praise him every time he does it until it becomes part of his routine and, and you no longer need to provide positive reinforcement.</p>
+       
+<h3>2. Immediate Consequences</h3>
+<p>Make sure to provide rewards or punishments immediately after the child acts or reacts. If you give it after a day or a week, it will break the formation of a good habit and won’t be effective.</p>
+
+<h3>3. Effective Consequences</h3>
+<p>If a chosen consequence is not working, be ready to try another one until you find the one that works in modifying the child’s behaviour.</p>
+
+<h3>4. Same Consequences</h3>
+<p>When all the adults, including family members, teachers, caregivers, etc., provide the same consequences, then the behaviour change happens even faster.</p>
+<p>The behaviour modification methods are adaptable to fix many issues in life. Destroying and developing new habits and behaviours not only boosts your self-confidence, but also helps you become successful in life. Go ahead and start practising these methods to have a balanced and fulfilling life.</p>
+
+</section>
+
+
+
+
+
+
+
+
+       
+
+
+        <section class="page-section">
+          <h2 class="section-title" id="Techniques">Techniques</h2>
+          
+
+<h3>Positive Reinforcement</h3>
+          <p> Positive reinforcement is giving rewards to kids to encourage the desired behaviour. Getting a gift is associated with positive feelings such as excitement and joy. Hence, it is one of the effective techniques in shaping behaviour modification in kids. To prevent kids from getting bored, surprise them with different rewards. Make the rewards be a combination of favourite food, objects, extra playtime, verbal prizes, surprise trips, extra TV time, etc.</p>
+
+<h3>Negative Reinforcement</h3>
+          <p> In this technique, children are motivated to towards the desired behaviour in order to escape from unpleasant experiences created by parents, teachers, or therapists.</p>
+          
+<h3>Positive Punishment</h3>
+          <p> In this method, kids face negative consequences for negative behaviour. Here when they act undesirably, you give them an extra task that is unpleasant to perform. Hence, it is called positive punishment.</p>
+          
+<h3> Negative Punishmentt</h3>
+          <p> In negative punishment, you take away something the children enjoy as a punishment for their negative behaviour. Here as a punishment, you don’t allow them to have their favourite food, playtime, etc. The fear of losing their privilege motivates them to correct their behaviour.</p>
+          
+
+        </section>
+      </main>
+      <footer class="placeholder-section">
+        <p>Footer section</p>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        const sectionsContainer = document.querySelector('.page-sections');
+const sections = document.querySelectorAll('.page-section');
+const nav = document.querySelector('.nav-sections');
+const menu = nav.querySelector('.menu');
+const links = nav.querySelectorAll('.menu-item-link');
+const activeLine = nav.querySelector('.active-line');
+const sectionOffset = nav.offsetHeight + 24;
+const activeClass = 'active';
+let activeIndex = 0;
+let isScrolling = true;
+let userScroll = true;
+
+const setActiveClass = () => {
+  links[activeIndex].classList.add(activeClass);
+};
+
+const removeActiveClass = () => {
+  links[activeIndex].classList.remove(activeClass);
+};
+
+const moveActiveLine = () => {
+  const link = links[activeIndex];
+  const linkX = link.getBoundingClientRect().x;
+  const menuX = menu.getBoundingClientRect().x;
+
+  activeLine.style.transform = `translateX(${(menu.scrollLeft - menuX) + linkX}px)`;
+  activeLine.style.width = `${link.offsetWidth}px`;
+}
+
+const setMenuLeftPosition = position => {
+  menu.scrollTo({
+    left: position,
+    behavior: 'smooth',
+  });
+};
+
+const checkMenuOverflow = () => {
+  const activeLink = links[activeIndex].getBoundingClientRect();
+  const offset = 30;
+  
+  if (Math.floor(activeLink.right) > window.innerWidth) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.right - window.innerWidth + offset);
+  } else if (activeLink.left < 0) {
+    setMenuLeftPosition(menu.scrollLeft + activeLink.left - offset)
+  }
+}
+
+const handleActiveLinkUpdate = current => {
+  removeActiveClass();
+  activeIndex = current;
+  checkMenuOverflow();
+  setActiveClass();
+  moveActiveLine();
+};
+
+const init = () => {
+  moveActiveLine(links[0]);
+  document.documentElement.style.setProperty('--section-offset', sectionOffset);
+}
+
+links.forEach((link, index) => link.addEventListener('click', () => {
+  userScroll = false;
+  handleActiveLinkUpdate(index);
+}))
+
+window.addEventListener("scroll", () => {
+  const currentIndex = sectionsContainer.getBoundingClientRect().top < 0
+    ? (sections.length - 1) - [...sections].reverse().findIndex(section => window.scrollY >= section.offsetTop - sectionOffset * 2)
+    : 0;
+  
+  if (userScroll && activeIndex !== currentIndex) {
+    handleActiveLinkUpdate(currentIndex);
+  } else {
+   	window.clearTimeout(isScrolling);
+	  isScrolling = setTimeout(() => userScroll = true, 100); 
+  }
+});
+
+init();
+      </script>
+</body>
+</html>
